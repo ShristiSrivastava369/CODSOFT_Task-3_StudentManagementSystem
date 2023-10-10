@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('allstudent.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            animation: bounce 1s infinite;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.9); 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s; 
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        
+        tr:hover {
+            background-color: #f5f5f5;
+            transform: scale(1.03);
+            transition: transform 0.2s;
+        }
+
+       
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>All Students</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Subject</th>
+                <th>College Name</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}" class="table-row" th:attr="data-id=${student.id}">
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.age}"></td>
+                <td th:text="${student.subject}"></td>
+                <td th:text="${student.collegeName}"></td>
+                <td th:text="${student.address}"></td>
+                <td class="action-buttons">
+                <form th:action="@{'/delete/' + ${student.id}}" th:object="${student}" method="get">
+                    <button type="submit" class="delete-button">-</button>
+                    </form>
+    
+                <!-- Update button -->
+                <form th:action="@{'/Update-Student/' + ${student.id}}" th:object="${student}" method="get">
+                <button type="submit" class="update-button">✎</button>
+                </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const tableRows = document.querySelectorAll('.table-row');
+        tableRows.forEach(row => {
+            row.addEventListener('click', () => {
+                const studentId = row.getAttribute('data-id');
+                window.location.href = `/Student-Details/${studentId}`;
+            });
+        });
+    </script>
+</body>
+</html>

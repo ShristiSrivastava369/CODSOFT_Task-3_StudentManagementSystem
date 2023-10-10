@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('student.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 50px;
+            margin-top: 100px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav li {
+            margin: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        #about {
+            background-color: rgba(0, 0, 0,0.8);
+            color: #fff;
+            padding: 30px;
+            border: 1px solid rgb(128, 128, 0);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+            margin-top: 80px;
+        }
+
+        #contact {
+            background-color: rgb(0, 0, 0,0.8);
+            color: #fff;
+            padding: 30px;
+            border: 1px solid rgb(128, 128, 0);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        #about:hover,
+        #contact:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a th:href="@{/about}">About Us</a></li>
+            <li><a th:href="@{/All-Students}">All Students</a></li>
+            <li><a th:href="@{/Add-Student}">Add Student</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li>
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Search..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Welcome to Student Management System</h1>
+        <p>Your one-stop solution for managing student information.</p>
+        <p style="font-style: italic;">~Powered By CodSoft</p>
+    </header>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>This website is a project meticulously crafted by Shristi Srivastava during her internship at Codsoft. It stands as a testament to my dedication and creativity. This project takes the form of a versatile student management application, offering users the ability to seamlessly perform CRUD operations. The intuitive design simplifies navigation, with a user-friendly navbar providing easy access to a plethora of options.</p>
+        <a th:href="@{/about}" style="text-underline-position: below;color: grey;">Read More</a>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to contact us! </p>
+        <a th:href="@{/contact}" style="text-underline-position: below;color: grey;">Read More</a>
+    </section>
+    <footer>
+        <p>&copy; 2023 Student Management System ~ CodSoft</p>
+    </footer>
+</body>
+</html>

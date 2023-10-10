@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${student.name}">Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .postcard {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1s;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #007bff;
+            font-size: 24px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button[type="button"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        
+            a.button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none; 
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    
+    a.button:hover {
+        background-color: #0056b3;
+    }
+
+        a.delete {
+            background-color: #ff4545;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            margin-left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        a.delete:hover {
+            background-color: #ff0000;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="postcard">
+        <h1>Student's Detail</h1>
+        <h3>Roll Number: <span th:text="${student.rollNo}"></span></h3>
+        <p>Name: <span th:text="${student.name}"></span></p>
+        <p>Age: <span th:text="${student.age}"></span></p>
+        <p>Subject: <span th:text="${student.subject}"></span></p>
+        <p>College Name: <span th:text="${student.collegeName}"></span></p>
+        <p>Address: <span th:text="${student.address}"></span></p>
+        <div class="button-container">
+        <a th:href="@{'/Update-Student/' + ${student.id}}" class="button">Update</a>
+        <a th:href="@{'/delete/' + ${student.id}}" class="delete">-</a>
+</div>
+
+    </div>
+</body>
+</html>
